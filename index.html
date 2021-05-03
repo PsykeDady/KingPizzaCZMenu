@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8"/>
+        <meta name="description" content="Menu del ristorante King Pizza">
+        <meta name="keywords" content="HTML,CSS,JavaScript,template">
+        <meta name="author" content="PsykeDady">
+        <meta 
+            name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
+        <link href="king.css"
+            type="text/CSS"
+            media=screen
+            rel="stylesheet">
+        <link rel="icon" href="images/favicon.png">
+        <script type="text/javascript" src="king.js"></script>
+        
+
+        <title>
+            King Pizza di Salvatore Crisafulli
+        </title>
+    </head>
+
+<body onload="locStorage()">
+    <div id="container">
+        <div id="alto">
+            <div id="banner" onclick="ricarica(false)">
+            </div>
+        </div>
+
+        <div id="menubar">
+            <button onclick="ricarica(false)" style="color:black;"><p>            
+                &#127968;
+            </p></button>
+            <button onclick="dettagli(0,-1)"><p>
+                <b>Pizze</b>
+            </p></button>
+            <button onclick="dettagli(1,-1)"><p>
+                <b>Rosticceria</b>
+            </p></button>
+            <button onclick="riepilogo()"><p>
+                <b>Riepilogo</b>
+            </p></button>
+            <button onclick="info()"><p>
+                <b>Info&#38;contatti</b>
+            </p></button>
+        </div>
+
+        <div id="centro" >
+            <table id="menupizze" >
+            </table>
+        </div>
+
+        <div class="popup popup-hidden"></div>
+
+        <div id="basso">
+            <p><i>Sito internet statico sviluppato da</i>:<br>
+            <b>Davide Galati</b> 
+            ( in arte <b><i>PsykeDady</i></b> ) <span class="colleg" onclick="mostraEmail()">mostra email</span><br>
+            Il sito è hostato su <a href="https://surge.sh">surge.sh</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

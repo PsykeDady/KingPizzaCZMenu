@@ -1,0 +1,376 @@
+:root{
+    /*colors*/
+    --main-bg-red:0;
+    --main-bg-green:0;
+    --main-bg-blu:0;
+    --main-bg-color: rgb(var(--main-bg-red),var(--main-bg-green),var(--main-bg-blu));
+    --main-fg-color: rgb(
+        calc(255 - var(--main-bg-red)),
+        calc(255 - var(--main-bg-green)),
+        calc(255 - var(--main-bg-blu))
+    ); 
+    --main-img-color:#000000;
+    --secondary-bg-color:#c6a700;
+    --popup-bg-color:gray;
+    --bordi-color:var(--main-fg-color);
+    --tbody-even:var(--main-bg-color);
+    --tbody-odd: var(--secondary-bg-color);
+    --tbody-sel:var(--main-fg-color);
+    --tbody-sel-fg:var(--main-bg-color);
+    --tr-descrizioni-bg:var(--main-fg-color);
+    --tr-descrizioni-fg:var(--main-bg-color);
+
+    
+    /*dimension*/
+    --cw:98vmin;
+    --cwred:calc(var(--cw)*99.5 /100);
+    --ch:99.5vh;
+    --borders-width: calc(var(--cw) * 2/1000);
+    --table-width: calc(var(--cwred)*98/100);
+    --padding-el-xs : calc(var(--cwred) * 5/1000);
+    --padding-el: calc(var(--cwred) * 10/1000);
+    --padding-el-xl: calc(var(--cwred) * 35/1000);
+    --button-menu-w:calc(var(--cwred) * 1.7/10);
+    --popup-width:calc(var(--cwred)*80/100);
+    --banner-width:calc(var(--cwred)*50/100);
+    
+    /*radius*/
+    --radius-width: calc(var(--cw) * 50/1000);
+    
+    /*height*/
+    --alto-height:calc( var(--ch) * 14 / 100 );
+    --basso-height: calc( var(--ch) * 7 / 100 );;
+    --menubar-height: calc( var(--ch) * 7 / 100 );
+    --centro-height: calc( var(--ch) - var(--alto-height) - var(--basso-height) - var(--menubar-height));
+    --tr-height:calc(var(--centro-height)*55/1000);
+    --tr-descrizione-height:calc(var(--centro-height)*30/1000);
+    --popup-height:calc( var(--ch) * 25 / 100 );
+    --banner-height:calc( var(--alto-height) * 100 / 100 );
+    
+    /*position*/
+    --left-container:calc( (100vw - var(--cw))/2 );
+    --left-inside: calc( (var(--cw) - var(--cwred))/2 );
+    --left-menubar: calc( (var(--cw) - var(--cwred) - var(--padding-el-xs))/2);
+    --table-left:calc((var(--cwred) - var(--table-width)) / 2);
+    --banner-left:calc((var(--cwred) - var(--banner-width)) / 2);
+    --banner-top: calc((var(--alto-height) - var(--banner-height)) / 2);
+
+    /* margins */
+    --margin-p:calc( var(--ch) * 2 / 100 );
+    --margin-popup:calc(var(--popup-height)*4/100);
+    
+    /*font size*/
+    --alto-font-size:calc(var(--cwred)*6/100);
+    --centro-font-size:calc(var(--ch)*4/100);
+    --headfoot-font-size:calc(var(--basso-height) * 27 / 100);
+    --menubar-font-size:calc(var(--cwred)*3.5/100);
+    --tr-descrizione-font-size:calc(var(--cwred)*3/100);
+    --tr-font-size:calc(var(--cwred)*6/100);
+    --popup-font-s:calc(var(--popup-width)*8/100);
+
+
+    /* transizioni */
+    --transizione-popup: 0.5s cubic-bezier(.36,.86,.86,.36);
+}
+
+*{
+    /*KEYBOARD EVENT*/
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /*STYLE*/
+    box-sizing: border-box;
+    z-index: inherit;
+}
+
+*::-moz-focus-inner{
+    outline: 0 !important;
+    border:0;
+}
+
+body {
+    background-repeat: no-repeat repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: var(--ch);
+    width: 100vw;
+    background: url(images/pizza.png);
+    background-color: var(--main-bg-color);
+    background-size: 4%;
+    border: none;
+    margin: 0;
+}
+
+#container{
+    position: absolute;
+    height: var(--ch);
+    width: var(--cw);
+    background-color: var(--main-bg-color);
+    top: 0;
+    left: var(--left-container);
+    border-radius: var(--radius-width);
+    border: var(--borders-width) white double;
+}
+
+#alto{
+    background-color: var(--main-img-color);
+    padding-left: var(--padding-el-xl);
+    border-top-left-radius: var(--radius-width)var(--radius-width);
+    border-top-right-radius: var(--radius-width);
+    color: var(--main-fg-color);
+    position: relative;
+    top: 0;
+    left: 0;
+    width: var(--cwred);
+    height: var(--alto-height);
+    font-size:var(--alto-font-size);
+    border: none;
+    margin: 0px;
+    overflow-y: scroll;
+    scrollbar-color: var(--bordi-color) var(--main-bg-color) ;
+    scrollbar-width: thin;
+}
+
+#alto #banner{
+    background-image: url(images/kingpbanner_mod.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    left:var(--banner-left);
+    top: var(--banner-top);
+    width: var(--banner-width);
+    height: var(--banner-height);
+    position: absolute;
+    display: block;
+}
+
+
+#menubar{
+    position: relative;
+    top: auto;
+    left: var(--left-menubar);
+    width: var(--cwred);
+    height: var(--menubar-height);
+    background-color: var(--secondary-bg-color);
+    border: none;
+    --hb: calc(var(--menubar-height)*7/10);
+    --tp:calc( (var(--menubar-height) - var(--hb))/2 );
+    --lt: calc(var(--cwred)*1/100);
+    padding-left: var(--lt) ;
+    padding-right: var(--lt);
+    padding-bottom: var(--tp);
+    padding-top: var(--tp);
+    margin: 0px;
+}
+
+#menubar button,#menubar button:focus{
+    background-color: var(--secondary-bg-color);
+    border: none;
+    border-right: solid var(--main-bg-color) var(--borders-width);
+    color: var(--main-bg-color);
+    position: relative;
+    height: var(--hb);
+    width:  fit-content;  
+    font-size: var(--menubar-font-size);
+    overflow: hidden;
+    text-overflow: clip; 
+    transition: all 0.3s linear;
+}
+#menubar button:last-child{
+    border-right: none;
+}
+#menubar button:active{
+    background-color: var(--main-bg-color);
+    color:var(--secondary-bg-color);
+    border: none;
+}
+#menubar p{
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: left;
+}
+
+#centro{
+    position: relative;
+    top: auto;
+    padding: var(--padding-el);
+    left: var(--left-inside);
+    width: var(--cwred);
+    height: var(--centro-height);
+    font-size: calc( var(--centro-height) * 5 / 100 );
+    border: none;
+    border-bottom: var(--main-fg-color) var(--borders-width) dotted;
+    margin: 0px;
+    overflow-y: scroll;
+    color: var(--main-fg-color);
+}
+
+.colleg{
+    border-bottom: blue solid var(--borders-width);
+    color: blue;
+}
+#centro p,#centro h3{
+    margin-top: 0;
+    margin-bottom: var(--margin-p);
+}
+#centro #menupizze{
+    width: var(--table-width);
+    left:var(--table-left);
+    position: absolute;
+    border: none;
+    display: contents;
+}
+#centro .centrotext{
+    
+   /*  width: calc( var(--cwred) - var(--padding-el-xl));
+    height: calc( var(--centro-height) - var(--padding-el-xl)); */
+    background-color: var(--secondary-bg-color);
+    color: var(--main-bg-color);
+    border-radius: var(--radius-width);
+    padding: var(--padding-el);
+    font-size: var(--centro-font-size);
+}
+
+
+.popup{
+    color: var(--main-fg-color);
+    border: solid var(--main-fg-color) var(--borders-width);
+    padding: var(--padding-el);
+    height: fit-content;
+    width: var(--popup-width);
+    font-size: var(--popup-font-s);
+    border-radius: var(--radius-width);
+    left: calc((var(--cwred) - var(--popup-width)) /2);
+    top: calc((100vh - var(--popup-height)) /2);
+    z-index: 999;
+    position: absolute;
+    transition: all var(--transizione-popup)
+}
+.popup *{
+    margin:var(--margin-popup);
+}
+.popup-visible{
+    visibility: visible;
+    background-color: var(--popup-bg-color) ;
+}
+.popup-hidden{
+    visibility: hidden;
+    background-color: transparent ;
+}
+
+#menupizze tbody *{
+    width: 100%;
+    font-size:var(--tr-font-size);
+    height: var(--tr-height);
+}
+#menupizze tbody:nth-child(odd) th{
+    background-color: var(--tbody-odd);
+    color: var(--main-bg-color)
+}
+#menupizze tbody:nth-child(even) th{
+    background-color: var(--tbody-even);
+    color: var(--main-fg-color)
+}
+#menupizze tbody:hover th{
+    background-color:var(--tbody-sel);
+    color:var(--tbody-sel-fg);
+}
+#menupizze th {
+    width:100%;
+    border: none;
+    border-right: medium solid var(--main-bg-color);
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: var(--main-fg-color);
+}
+#menupizze tbody.descrizioni {
+    height: var(--tr-descrizione-height);
+}
+
+#menupizze tbody.descrizioni th{
+    padding: 0;
+    background-color:var(--tr-descrizioni-bg);
+    font-size: var(--tr-descrizione-font-size);
+    width:100%;
+    margin: 0px;
+    border: none;
+    border-right: medium solid var(--main-bg-color);
+    text-align: left;
+    color: var(--main-bg-color);
+}
+
+#basso{
+    padding-left: var(--padding-el-xl);
+    border-bottom-left-radius: var(--radius-width);
+    border-bottom-right-radius: var(--radius-width);
+    position: relative;
+    top: auto;
+    left: 0;
+    width: var(--cwred);
+    height: var(--basso-height);
+    font-size: calc( var(--headfoot-font-size) );
+    border: none;
+    margin: 0px;
+    overflow-y: scroll;
+    scrollbar-color: var(--bordi-color) var(--main-bg-color) ;
+    scrollbar-width: thin;
+    color: var(--main-fg-color);
+}
+#basso p{
+    margin: 0px;
+    left:2%;
+}
+
+
+#alto::-webkit-scrollbar{
+    width: var(--borders-width);
+}
+#alto::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+#alto::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+#alto::-webkit-scrollbar-track:hover{
+    background-color: transparent;
+}
+#alto::-webkit-scrollbar-thumb:hover{
+    background-color: transparent;
+}
+#basso::-webkit-scrollbar{
+    width: var(--borders-width);
+}
+#basso::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+#basso::-webkit-scrollbar-thumb{
+    background-color: transparent;
+}
+#basso::-webkit-scrollbar-track:hover{
+    background-color: transparent;
+}
+#basso::-webkit-scrollbar-thumb:hover{
+    background-color: transparent;
+}
+#centro::-webkit-scrollbar{
+    width: var(--borders-width);
+}
+#centro::-webkit-scrollbar-track{
+    background-color: transparent;
+
+}
+#centro::-webkit-scrollbar-thumb{
+    background-color: var(--bordi-color);
+}
+#centro::-webkit-scrollbar-track:hover{
+    background-color: var(--bordi-color);
+}
+#centro::-webkit-scrollbar-thumb:hover{
+    background-color: var(--main-bg-color);
+}
