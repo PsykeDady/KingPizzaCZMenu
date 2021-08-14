@@ -11,4 +11,3 @@ In questo momento è ospitato in un dominio gratuito [surge.sh](surge.sh) a ques
 ## feature
 
 - aspetto prevalentemente mobile, ma comodo anche su desktop
-- 
